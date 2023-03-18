@@ -55,6 +55,8 @@ const Home: NextPage = () => {
   const { data: movies } = api.movie.getAll.useQuery();
   const { data: featuredMovie } = api.movie.getFeaturedMovie.useQuery();
 
+  const [displayLoadingScreen, setDisplayLoadingScreen] = useState(true);
+
   const [selectedNavTabOptionId, setSelectedNavTabOptionId] = useState<string>(
     navTabOptions[0]?.id || "home"
   );
@@ -100,7 +102,15 @@ const Home: NextPage = () => {
     };
   }, [setShouldPlayFeaturedMovieVideo, shouldPlayFeaturedMovieVideo]);
 
-  if (!featuredMovie || !movies) {
+  useEffect(() => {
+    if (featuredMovie && movies) {
+      setTimeout(() => {
+        setDisplayLoadingScreen(false);
+      }, 2000);
+    }
+  }, [setDisplayLoadingScreen, featuredMovie, movies]);
+
+  if (displayLoadingScreen || !featuredMovie || !movies) {
     return <LoadingScreen />;
   }
 
