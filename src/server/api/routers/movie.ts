@@ -6,8 +6,8 @@ import {
   protectedProcedure,
 } from "@/server/api/trpc";
 
-export const exampleRouter = createTRPCRouter({
-  hello: publicProcedure
+export const movieRouter = createTRPCRouter({
+  getRecent: publicProcedure
     .input(z.object({ text: z.string() }))
     .query(({ input }) => {
       return {
@@ -16,7 +16,18 @@ export const exampleRouter = createTRPCRouter({
     }),
 
   getAll: publicProcedure.query(({ ctx }) => {
-    return ctx.prisma.example.findMany();
+    return ctx.prisma.movie.findMany();
+  }),
+
+  getFeaturedMovie: publicProcedure.query(({ ctx }) => {
+    return ctx.prisma.movieFeatured.findFirst({
+      orderBy: {
+        createdAt: "desc",
+      },
+      include: {
+        movie: true,
+      },
+    });
   }),
 
   getSecretMessage: protectedProcedure.query(() => {
