@@ -106,7 +106,7 @@ const Home: NextPage = () => {
 
   return (
     <div
-      className="fixed inset-0 flex select-none flex-col overflow-y-auto bg-zinc-900 text-white"
+      className="no-highlight-color fixed inset-0 flex select-none flex-col overflow-y-auto bg-zinc-900 text-white"
       onScroll={(event) => {
         if ((event.target as HTMLDivElement).scrollTop === 0) {
           return !isNavBarOnTop && setIsNavBarOnTop(true);
@@ -173,13 +173,13 @@ const Home: NextPage = () => {
                 <div
                   key={`nav-tab-option--${navTabOption.id}`}
                   onClick={() => setSelectedNavTabOptionId(navTabOption.id)}
-                  className="relative cursor-pointer text-sm hover:text-zinc-200"
+                  className="group relative cursor-pointer text-sm"
                 >
                   <div
                     className={`absolute inset-0 flex items-center justify-center whitespace-nowrap drop-shadow-md ${
                       selectedNavTabOptionId === navTabOption.id
-                        ? "font-black text-purple-500"
-                        : "font-light text-white"
+                        ? "font-black text-purple-500 group-hover:text-purple-500"
+                        : "font-light text-white group-hover:text-purple-300"
                     }`}
                   >
                     <div>{navTabOption.label}</div>

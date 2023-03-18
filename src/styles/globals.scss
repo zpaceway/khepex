@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+.no-highlight-color {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
 /* For Webkit-based browsers (Chrome, Safari and Opera) */
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
