@@ -116,19 +116,22 @@ const Home: NextPage = () => {
     >
       <div className="relative h-[calc(100svh_-_80px)] shrink-0 grow-0">
         <div className="absolute inset-0 overflow-hidden bg-slate-600">
-          {!shouldPlayFeaturedMovieVideo &&
-            featuredMovie.movie.featuredPicture && (
-              <img
-                src={featuredMovie.movie.featuredPicture}
-                alt="featured-movie-picture"
-                className="h-full w-full object-cover"
-              />
-            )}
+          {featuredMovie.movie.featuredPicture && (
+            <img
+              src={featuredMovie.movie.featuredPicture}
+              alt="featured-movie-picture"
+              className={`h-full w-full object-cover ${
+                shouldPlayFeaturedMovieVideo ? "hidden" : "block"
+              }`}
+            />
+          )}
           {featuredMovie.movie.featuredVideo && (
             <video
               ref={videoRef}
               src={featuredMovie.movie.featuredVideo}
-              className="h-full w-full object-cover"
+              className={`h-full w-full object-cover ${
+                !shouldPlayFeaturedMovieVideo ? "hidden" : "block"
+              }`}
             ></video>
           )}
         </div>
@@ -215,7 +218,7 @@ const Home: NextPage = () => {
       <div className="z-10 -mt-40">
         <div className="flex flex-col py-8 px-4 text-2xl md:px-16">
           <div className="font-black">New Releases</div>
-          <div className="flex gap-4 overflow-x-auto py-4">
+          <div className="scrollbar-hide flex gap-4 overflow-x-auto">
             {movies?.map((movie, index) => (
               <div
                 key={`new-realeases-${index}`}
@@ -241,7 +244,7 @@ const Home: NextPage = () => {
       <div className="z-10">
         <div className="flex flex-col py-8 px-4 text-2xl md:px-16">
           <div className="font-black">New Releases</div>
-          <div className="flex gap-4 overflow-x-auto py-4">
+          <div className="scrollbar-hide flex gap-4 overflow-x-auto">
             {movies?.map((movie, index) => (
               <div
                 key={`new-realeases-${index}`}
@@ -267,7 +270,7 @@ const Home: NextPage = () => {
       <div className="z-10">
         <div className="flex flex-col py-8 px-4 text-2xl md:px-16">
           <div className="font-black">New Releases</div>
-          <div className="flex gap-4 overflow-x-auto py-4">
+          <div className="scrollbar-hide flex gap-4 overflow-x-auto">
             {movies?.map((movie, index) => (
               <div
                 key={`new-realeases-${index}`}
