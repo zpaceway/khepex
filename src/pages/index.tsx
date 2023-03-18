@@ -106,7 +106,7 @@ const Home: NextPage = () => {
 
   return (
     <div
-      className="fixed inset-0 flex flex-col overflow-y-auto bg-zinc-900 text-white"
+      className="fixed inset-0 flex select-none flex-col overflow-y-auto bg-zinc-900 text-white"
       onScroll={(event) => {
         if ((event.target as HTMLDivElement).scrollTop === 0) {
           return !isNavBarOnTop && setIsNavBarOnTop(true);
@@ -163,9 +163,7 @@ const Home: NextPage = () => {
         </div>
         <div
           className={`fixed top-0 left-0 right-0 z-20 flex select-none justify-between py-4 px-4 transition-all duration-500 md:px-16 ${
-            isNavBarOnTop
-              ? "bg-transparent shadow-none"
-              : "bg-zinc-900 shadow-md"
+            isNavBarOnTop ? "bg-transparent" : "bg-zinc-900"
           }`}
         >
           <div className="flex items-center gap-8">
@@ -215,8 +213,8 @@ const Home: NextPage = () => {
           </div>
         </div>
       </div>
-      <div className="z-10 -mt-40">
-        <div className="flex flex-col py-8 px-4 text-2xl md:px-16">
+      <div className="z-10 -mt-28">
+        <div className="flex flex-col py-2 px-4 text-2xl md:px-16">
           <div className="font-black">New Releases</div>
           <div className="scrollbar-hide flex gap-4 overflow-x-auto">
             {movies?.map((movie, index) => (
@@ -242,7 +240,7 @@ const Home: NextPage = () => {
         </div>
       </div>
       <div className="z-10">
-        <div className="flex flex-col py-8 px-4 text-2xl md:px-16">
+        <div className="flex flex-col py-2 px-4 text-2xl md:px-16">
           <div className="font-black">New Releases</div>
           <div className="scrollbar-hide flex gap-4 overflow-x-auto">
             {movies?.map((movie, index) => (
@@ -268,7 +266,137 @@ const Home: NextPage = () => {
         </div>
       </div>
       <div className="z-10">
-        <div className="flex flex-col py-8 px-4 text-2xl md:px-16">
+        <div className="flex flex-col py-2 px-4 text-2xl md:px-16">
+          <div className="font-black">New Releases</div>
+          <div className="scrollbar-hide flex gap-4 overflow-x-auto">
+            {movies?.map((movie, index) => (
+              <div
+                key={`new-realeases-${index}`}
+                className="relative aspect-video w-60 shrink-0 grow-0 overflow-hidden rounded-md shadow-[0_0_9px_rgba(21,21,21)]"
+              >
+                <div className="group absolute inset-0 cursor-pointer transition-all">
+                  <div className="hidden h-full w-full items-center justify-center bg-black bg-opacity-50 group-hover:flex">
+                    <div className="text-6xl">
+                      <MdInfoOutline />
+                    </div>
+                  </div>
+                </div>
+                <img
+                  src={movie.smallPicture || ""}
+                  alt=""
+                  className="object-cover"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+      <div className="z-10">
+        <div className="flex flex-col py-2 px-4 text-2xl md:px-16">
+          <div className="font-black">New Releases</div>
+          <div className="scrollbar-hide flex gap-4 overflow-x-auto">
+            {movies?.map((movie, index) => (
+              <div
+                key={`new-realeases-${index}`}
+                className="relative aspect-video w-60 shrink-0 grow-0 overflow-hidden rounded-md shadow-[0_0_9px_rgba(21,21,21)]"
+              >
+                <div className="group absolute inset-0 cursor-pointer transition-all">
+                  <div className="hidden h-full w-full items-center justify-center bg-black bg-opacity-50 group-hover:flex">
+                    <div className="text-6xl">
+                      <MdInfoOutline />
+                    </div>
+                  </div>
+                </div>
+                <img
+                  src={movie.smallPicture || ""}
+                  alt=""
+                  className="object-cover"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+      <div className="z-10">
+        <div className="flex flex-col py-2 px-4 text-2xl md:px-16">
+          <div className="font-black">New Releases</div>
+          <div className="scrollbar-hide flex gap-4 overflow-x-auto">
+            {movies?.map((movie, index) => (
+              <div
+                key={`new-realeases-${index}`}
+                className="relative aspect-video w-60 shrink-0 grow-0 overflow-hidden rounded-md shadow-[0_0_9px_rgba(21,21,21)]"
+              >
+                <div className="group absolute inset-0 cursor-pointer transition-all">
+                  <div className="hidden h-full w-full items-center justify-center bg-black bg-opacity-50 group-hover:flex">
+                    <div className="text-6xl">
+                      <MdInfoOutline />
+                    </div>
+                  </div>
+                </div>
+                <img
+                  src={movie.smallPicture || ""}
+                  alt=""
+                  className="object-cover"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+      <div className="z-10">
+        <div className="flex flex-col py-2 px-4 text-2xl md:px-16">
+          <div className="font-black">New Releases</div>
+          <div className="scrollbar-hide flex gap-4 overflow-x-auto">
+            {movies?.map((movie, index) => (
+              <div
+                key={`new-realeases-${index}`}
+                className="relative aspect-video w-60 shrink-0 grow-0 overflow-hidden rounded-md shadow-[0_0_9px_rgba(21,21,21)]"
+              >
+                <div className="group absolute inset-0 cursor-pointer transition-all">
+                  <div className="hidden h-full w-full items-center justify-center bg-black bg-opacity-50 group-hover:flex">
+                    <div className="text-6xl">
+                      <MdInfoOutline />
+                    </div>
+                  </div>
+                </div>
+                <img
+                  src={movie.smallPicture || ""}
+                  alt=""
+                  className="object-cover"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+      <div className="z-10">
+        <div className="flex flex-col py-2 px-4 text-2xl md:px-16">
+          <div className="font-black">New Releases</div>
+          <div className="scrollbar-hide flex gap-4 overflow-x-auto">
+            {movies?.map((movie, index) => (
+              <div
+                key={`new-realeases-${index}`}
+                className="relative aspect-video w-60 shrink-0 grow-0 overflow-hidden rounded-md shadow-[0_0_9px_rgba(21,21,21)]"
+              >
+                <div className="group absolute inset-0 cursor-pointer transition-all">
+                  <div className="hidden h-full w-full items-center justify-center bg-black bg-opacity-50 group-hover:flex">
+                    <div className="text-6xl">
+                      <MdInfoOutline />
+                    </div>
+                  </div>
+                </div>
+                <img
+                  src={movie.smallPicture || ""}
+                  alt=""
+                  className="object-cover"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+      <div className="z-10">
+        <div className="flex flex-col py-2 px-4 text-2xl md:px-16">
           <div className="font-black">New Releases</div>
           <div className="scrollbar-hide flex gap-4 overflow-x-auto">
             {movies?.map((movie, index) => (
