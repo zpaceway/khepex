@@ -78,27 +78,31 @@ const Home: NextPage = () => {
         </div>
         <div className="absolute inset-0 w-full overflow-hidden shadow-[inset_0_-180px_80px_-80px_rgba(24,24,27)]"></div>
         <div className="absolute inset-0 w-full overflow-hidden shadow-[inset_0_180px_80px_-80px_rgba(16,16,16)]"></div>
-        <div className="absolute top-6 my-16 mx-4 flex flex-col gap-4 rounded-sm bg-black bg-opacity-50 p-2 text-2xl text-zinc-900 lg:mx-16 tall:top-20">
-          <div className="flex max-w-sm flex-col gap-2 text-white drop-shadow-md">
-            <div className="text-3xl font-black">{sponsoredContent?.name}</div>
-            <div className="text-base">{sponsoredContent?.description}</div>
-          </div>
-          <div className="flex flex-wrap gap-2">
-            <Button>
-              <div className="text-3xl">
-                <MdPlayArrow className="drop-shadow-md" />
+        <div className="absolute inset-y-0 flex items-center justify-center">
+          <div className="my-16 mx-4 flex flex-col items-center justify-center gap-4 rounded-sm bg-black bg-opacity-50 p-4 text-zinc-900 lg:mx-16">
+            <div className="flex max-w-sm flex-col gap-2 text-white drop-shadow-md">
+              <div className="text-3xl font-black">
+                {sponsoredContent?.name}
               </div>
-              <div className="font-medium drop-shadow-md">Play</div>
-            </Button>
-            <Button
-              variant="secondary"
-              onClick={() => setInfoContentId(sponsoredContent?.id || "")}
-            >
-              <div className="text-3xl">
-                <MdInfoOutline className="drop-shadow-md" />
-              </div>
-              <div className="font-medium drop-shadow-md">Info</div>
-            </Button>
+              <div className="text-base">{sponsoredContent?.description}</div>
+            </div>
+            <div className="flex w-full gap-1">
+              <Button>
+                <div className="text-2xl">
+                  <MdPlayArrow className="drop-shadow-md" />
+                </div>
+                <div className="text-xl font-medium drop-shadow-md">Play</div>
+              </Button>
+              <Button
+                variant="secondary"
+                onClick={() => setInfoContentId(sponsoredContent?.id || "")}
+              >
+                <div className="text-2xl">
+                  <MdInfoOutline className="drop-shadow-md" />
+                </div>
+                <div className="text-xl font-medium drop-shadow-md">Info</div>
+              </Button>
+            </div>
           </div>
         </div>
       </div>

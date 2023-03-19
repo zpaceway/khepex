@@ -22,7 +22,7 @@ const Carousel = ({ contents }: Props) => {
         <div className="font-black">New Releases</div>
         <div
           ref={ref}
-          className="scrollbar-hide flex gap-2 overflow-x-auto"
+          className="scrollbar-hide flex gap-1 overflow-x-auto"
           onMouseDown={(event) => {
             const carousel = ref.current;
             if (!carousel) return;
@@ -62,7 +62,7 @@ const Carousel = ({ contents }: Props) => {
             <div
               key={`new-realeases-${index}`}
               onClick={() => !isDragging && setInfoContentId(content.id)}
-              className="relative aspect-video w-60 shrink-0 grow-0 overflow-hidden rounded-sm shadow-[0_0_9px_rgba(21,21,21)]"
+              className="relative aspect-video w-60 shrink-0 grow-0 overflow-hidden rounded-sm"
             >
               <div className="group absolute inset-0 cursor-pointer transition-all">
                 <div className="hidden h-full w-full items-center justify-center bg-black bg-opacity-50 group-hover:flex">

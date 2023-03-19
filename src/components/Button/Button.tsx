@@ -21,7 +21,7 @@ const variantColorsMap: Record<TVariant, Record<TProperties, string>> = {
 const Button = ({ variant = "primary", children, ...rest }: Props) => {
   return (
     <div
-      className={`flex w-full cursor-pointer items-center justify-center gap-2 rounded-sm py-2 pl-4 pr-16 shadow-md hover:brightness-[98%] active:hover:brightness-95 ${variantColorsMap[variant].background} ${variantColorsMap[variant].text}`}
+      className={`flex w-full cursor-pointer items-center justify-center gap-2 rounded-sm py-2 px-4 shadow-md hover:brightness-[98%] active:hover:brightness-95 ${variantColorsMap[variant].background} ${variantColorsMap[variant].text}`}
       {...rest}
     >
       {children}
