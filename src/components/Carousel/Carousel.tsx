@@ -1,8 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 import { infoContentAtom } from "@/atoms";
+import Debouncer from "@/utils/Debouncer";
 import { type Content } from "@prisma/client";
 import { useAtom } from "jotai";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { MdInfoOutline } from "react-icons/md";
 
 type Props = {
@@ -11,7 +12,9 @@ type Props = {
 
 const Carousel = ({ contents }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
+  const debouncerRef = useRef(new Debouncer());
   const [, setInfoContentId] = useAtom(infoContentAtom);
+  const [isDragging, setIsDragging] = useState(false);
 
   return (
     <div className="z-10 -mt-28">
@@ -36,11 +39,13 @@ const Carousel = ({ contents }: Props) => {
               const deltaY = event.clientY - pos.y;
               carousel.scrollTop = pos.top - deltaY;
               carousel.scrollLeft = pos.left - deltaX;
+              setIsDragging(true);
             };
 
             const mouseUpHandler = () => {
               document.removeEventListener("mousemove", mouseMoveHandler);
               document.removeEventListener("mouseup", mouseUpHandler);
+              debouncerRef.current.exec(() => setIsDragging(false));
             };
 
             document.addEventListener("mousemove", mouseMoveHandler);
@@ -50,7 +55,7 @@ const Carousel = ({ contents }: Props) => {
           {contents.map((content, index) => (
             <div
               key={`new-realeases-${index}`}
-              onClick={() => setInfoContentId(content.id)}
+              onClick={() => !isDragging && setInfoContentId(content.id)}
               className="relative aspect-video w-60 shrink-0 grow-0 overflow-hidden rounded-md shadow-[0_0_9px_rgba(21,21,21)]"
             >
               <div className="group absolute inset-0 cursor-pointer transition-all">
