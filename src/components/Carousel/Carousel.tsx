@@ -62,9 +62,9 @@ const Carousel = ({ contents }: Props) => {
           <div
             key={`new-realeases-${index}`}
             onClick={() => !isDragging && setInfoContentId(content.id)}
-            className="relative flex w-60 shrink-0 grow-0 flex-col gap-1"
+            className="relative flex h-40 w-32 shrink-0 grow-0 flex-col gap-1"
           >
-            <div className="relative aspect-video w-60 overflow-hidden rounded-sm">
+            <div className="relative aspect-square h-40 overflow-hidden rounded-sm">
               <div className="group absolute inset-0 cursor-pointer transition-all">
                 <div className="hidden h-full w-full items-center justify-center bg-black bg-opacity-50 group-hover:flex">
                   <div className="text-6xl">
@@ -75,22 +75,22 @@ const Carousel = ({ contents }: Props) => {
               <img
                 src={content.smallPicture || ""}
                 alt=""
-                className="object-cover"
+                className="h-full w-full object-cover"
               />
             </div>
             <div className="absolute bottom-0 z-20  flex w-full items-center gap-1 bg-black bg-opacity-50 p-2">
               <div>
                 {content.type === ContentType.MOVIE && (
-                  <TbMovie className="text-xl" />
+                  <TbMovie className="text-lg" />
                 )}
                 {content.type === ContentType.SERIE && (
-                  <TbBoxMultiple2 className="text-xl" />
+                  <TbBoxMultiple2 className="text-lg" />
                 )}
                 {content.type === ContentType.SHORT && (
-                  <GiUnderwearShorts className="text-xl" />
+                  <GiUnderwearShorts className="text-lg" />
                 )}
               </div>
-              <div className="truncate">{content.name}</div>
+              <div className="truncate text-sm">{content.name}</div>
             </div>
           </div>
         ))}
