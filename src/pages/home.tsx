@@ -107,7 +107,7 @@ const Home: NextPage = () => {
           </div>
         </div>
       </div>
-      <div className="z-10 -mt-32">
+      <div className="z-10 -mt-[8.5rem]">
         <Carousel contents={contents || []} />
       </div>
       <div className="z-10">
