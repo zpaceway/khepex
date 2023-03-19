@@ -9,6 +9,8 @@ import NavBar from "@/components/NavBar";
 import Carousel from "@/components/Carousel";
 import InfoContent from "@/components/InfoContent";
 import Button from "@/components/Button";
+import { FaPlay } from "react-icons/fa";
+import { ImPlay } from "react-icons/im";
 
 const Home: NextPage = () => {
   const { data: contents } = api.content.getAll.useQuery(undefined, {
@@ -89,7 +91,7 @@ const Home: NextPage = () => {
             <div className="flex w-full gap-1">
               <Button>
                 <div className="text-2xl">
-                  <MdPlayArrow className="drop-shadow-md" />
+                  <ImPlay className="drop-shadow-md" />
                 </div>
                 <div className="text-xl font-medium drop-shadow-md">Play</div>
               </Button>
