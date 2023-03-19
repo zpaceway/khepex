@@ -48,7 +48,7 @@ const InfoContent = ({ content }: Props) => {
               </div>
               <div className="flex gap-4">
                 <div className="flex flex-col gap-2">
-                  <div className="text-4xl font-black">{content.name}</div>
+                  <div className="text-3xl font-black">{content.name}</div>
                   <div className="text-base">{content.description}</div>
                 </div>
               </div>
