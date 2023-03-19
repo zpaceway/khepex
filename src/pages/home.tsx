@@ -1,12 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
 import { type NextPage } from "next";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { MdInfoOutline, MdPlayArrow } from "react-icons/md";
 import { api } from "@/utils/api";
 import { useAtom } from "jotai";
-import { isLoadingScreenVisibleAtom } from "@/atoms";
+import { infoContentAtom, isLoadingScreenVisibleAtom } from "@/atoms";
 import NavBar from "@/components/NavBar/NavBar";
 import Carousel from "@/components/Carousel/Carousel";
+import InfoContent from "@/components/InfoContent/InfoContent";
 
 const Home: NextPage = () => {
   const { data: contents } = api.content.getAll.useQuery(undefined, {
@@ -18,6 +19,11 @@ const Home: NextPage = () => {
   );
 
   const [, setIsLoadingScreenVisible] = useAtom(isLoadingScreenVisibleAtom);
+  const [infoContentId, setInfoContentId] = useAtom(infoContentAtom);
+
+  const infoContent = useMemo(() => {
+    return contents?.find((content) => content.id === infoContentId);
+  }, [contents, infoContentId]);
 
   const [isNavBarOnTop, setIsNavBarOnTop] = useState(true);
 
@@ -85,7 +91,10 @@ const Home: NextPage = () => {
               </div>
               <div className="font-medium drop-shadow-md">Play</div>
             </div>
-            <div className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-md bg-zinc-600 bg-opacity-70 py-2 pl-4 pr-16 text-white shadow-md">
+            <div
+              className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-md bg-zinc-600 bg-opacity-70 py-2 pl-4 pr-16 text-white shadow-md"
+              onClick={() => setInfoContentId(sponsoredContent?.id || "")}
+            >
               <div className="text-4xl">
                 <MdInfoOutline className="drop-shadow-md" />
               </div>
@@ -95,6 +104,7 @@ const Home: NextPage = () => {
         </div>
       </div>
       <Carousel contents={contents || []} />
+      <InfoContent content={infoContent} />
     </div>
   );
 };

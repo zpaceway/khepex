@@ -1,5 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
+import { infoContentAtom } from "@/atoms";
 import { type Content } from "@prisma/client";
+import { useAtom } from "jotai";
 import { useRef } from "react";
 import { MdInfoOutline } from "react-icons/md";
 
@@ -9,6 +11,7 @@ type Props = {
 
 const Carousel = ({ contents }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
+  const [, setInfoContentId] = useAtom(infoContentAtom);
 
   return (
     <div className="z-10 -mt-28">
@@ -47,6 +50,7 @@ const Carousel = ({ contents }: Props) => {
           {contents.map((content, index) => (
             <div
               key={`new-realeases-${index}`}
+              onClick={() => setInfoContentId(content.id)}
               className="relative aspect-video w-60 shrink-0 grow-0 overflow-hidden rounded-md shadow-[0_0_9px_rgba(21,21,21)]"
             >
               <div className="group absolute inset-0 cursor-pointer transition-all">
