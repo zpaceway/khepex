@@ -41,7 +41,7 @@ const InfoContent = ({ content }: Props) => {
             />
           </div>
           <div className="absolute inset-0 -z-10 bg-black bg-opacity-40 shadow-inner"></div>
-          <div className="flex flex-col gap-4 overflow-auto">
+          <div className="flex flex-col overflow-auto">
             <div className="flex aspect-video overflow-hidden">
               <ReactPlayer
                 controls
@@ -50,7 +50,7 @@ const InfoContent = ({ content }: Props) => {
                 width="100%"
               />
             </div>
-            <div className="scrollbar-hide flex w-full flex-col gap-8 overflow-x-auto py-8 px-4">
+            <div className="scrollbar-hide flex w-full flex-col gap-2 overflow-x-auto px-4 pt-2 pb-16">
               <div className="flex gap-1">
                 <Button onClick={() => setInfoContentId("")}>
                   <div className="text-2xl">
