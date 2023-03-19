@@ -2,7 +2,11 @@
 import { infoContentAtom } from "@/atoms";
 import { type Content } from "@prisma/client";
 import { useAtom } from "jotai";
-import { AiFillPlayCircle, AiFillPlusCircle } from "react-icons/ai";
+import {
+  AiFillCloseCircle,
+  AiFillPlayCircle,
+  AiFillPlusCircle,
+} from "react-icons/ai";
 import { IoMdShareAlt } from "react-icons/io";
 import { RiDownloadCloudFill } from "react-icons/ri";
 import ReactPlayer from "react-player";
@@ -21,7 +25,7 @@ const InfoContent = ({ content }: Props) => {
   return (
     <div className="fixed inset-0 z-50 flex justify-end">
       <div
-        className="fixed inset-0 z-40 bg-black	bg-opacity-80 backdrop-blur-md"
+        className="fixed inset-0 z-40 bg-black	bg-opacity-95 backdrop-blur-md"
         onClick={() => setInfoContentId("")}
       ></div>
       <div className="z-50 flex h-full bg-black shadow-lg shadow-black">
@@ -36,6 +40,12 @@ const InfoContent = ({ content }: Props) => {
           <div className="absolute inset-0 -z-10 bg-black bg-opacity-40 shadow-inner"></div>
           <div className="max-w-2xl">
             <div className="scrollbar-hide flex h-full w-full flex-col gap-8 overflow-x-auto py-16 px-8">
+              <div
+                className="flex w-full cursor-pointer justify-center text-4xl"
+                onClick={() => setInfoContentId("")}
+              >
+                <AiFillCloseCircle />
+              </div>
               <div className="flex gap-4">
                 <div className="flex flex-col gap-2">
                   <div className="text-4xl font-black">{content.name}</div>

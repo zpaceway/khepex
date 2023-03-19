@@ -35,8 +35,8 @@ const Home: NextPage = () => {
     const sponsoredContainer = sponsoredContainerRef.current;
 
     const topIntersectionObserver = new IntersectionObserver(
-      ([e]) => {
-        setIsNavBarOnTop(!!e?.isIntersecting);
+      ([entry]) => {
+        setIsNavBarOnTop(!!entry?.isIntersecting);
       },
       { root: appElement, rootMargin: "0px", threshold: 1.0 }
     );
