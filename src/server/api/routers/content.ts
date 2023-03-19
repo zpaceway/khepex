@@ -6,7 +6,7 @@ import {
   protectedProcedure,
 } from "@/server/api/trpc";
 
-export const movieRouter = createTRPCRouter({
+export const contentRouter = createTRPCRouter({
   getRecent: publicProcedure
     .input(z.object({ text: z.string() }))
     .query(({ input }) => {
@@ -16,18 +16,20 @@ export const movieRouter = createTRPCRouter({
     }),
 
   getAll: publicProcedure.query(({ ctx }) => {
-    return ctx.prisma.movie.findMany();
+    return ctx.prisma.content.findMany();
   }),
 
-  getFeaturedMovie: publicProcedure.query(({ ctx }) => {
-    return ctx.prisma.movieFeatured.findFirst({
+  getSponsoredContent: publicProcedure.query(async ({ ctx }) => {
+    const sponsoredContent = await ctx.prisma.sponsoredContent.findFirst({
       orderBy: {
         createdAt: "desc",
       },
       include: {
-        movie: true,
+        content: true,
       },
     });
+
+    return sponsoredContent?.content;
   }),
 
   getSecretMessage: protectedProcedure.query(() => {

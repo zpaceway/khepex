@@ -2,7 +2,11 @@
 const config = {
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      screens: {
+        tall: { raw: "(min-height: 800px)" },
+      },
+    },
   },
   plugins: [],
 };

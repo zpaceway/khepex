@@ -59,27 +59,26 @@ model VerificationToken {
     @@map("tokens")
 }
 
-model Movie {
-    id              String   @id @default(auto()) @map("_id") @db.ObjectId
-    name            String
-    description     String?
-    smallPicture    String
-    featuredPicture String?
-    featuredVideo   String?
-    createdAt       DateTime @default(now())
-    updatedAt       DateTime @updatedAt
+model Content {
+    id               String             @id @default(auto()) @map("_id") @db.ObjectId
+    name             String
+    description      String?
+    smallPicture     String
+    sponsoredPicture String?
+    sponsoredVideo   String?
+    createdAt        DateTime           @default(now())
+    updatedAt        DateTime           @updatedAt
+    sponsored        SponsoredContent[]
 
-    MovieFeatured MovieFeatured[]
-
-    @@map("movies")
+    @@map("contents")
 }
 
-model MovieFeatured {
+model SponsoredContent {
     id        String   @id @default(auto()) @map("_id") @db.ObjectId
     movieId   String   @db.ObjectId
-    movie     Movie    @relation(fields: [movieId], references: [id], onDelete: Cascade)
+    content   Content  @relation(fields: [movieId], references: [id], onDelete: Cascade)
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
 
-    @@map("movies_featured")
+    @@map("promoted_contents")
 }
