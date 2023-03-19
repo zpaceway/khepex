@@ -62,10 +62,10 @@ model VerificationToken {
 model Content {
     id               String             @id @default(auto()) @map("_id") @db.ObjectId
     name             String
-    description      String?
+    description      String
     smallPicture     String
-    sponsoredPicture String?
-    sponsoredVideo   String?
+    sponsoredPicture String
+    sponsoredVideo   String
     createdAt        DateTime           @default(now())
     updatedAt        DateTime           @updatedAt
     sponsored        SponsoredContent[]
