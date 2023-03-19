@@ -16,7 +16,11 @@ export const contentRouter = createTRPCRouter({
     }),
 
   getAll: publicProcedure.query(({ ctx }) => {
-    return ctx.prisma.content.findMany();
+    return ctx.prisma.content.findMany({
+      orderBy: {
+        createdAt: "desc",
+      },
+    });
   }),
 
   getSponsoredContent: publicProcedure.query(async ({ ctx }) => {

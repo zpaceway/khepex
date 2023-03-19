@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { type NextPage } from "next";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { MdInfoOutline, MdPlayArrow } from "react-icons/md";
+import { MdInfoOutline } from "react-icons/md";
 import { api } from "@/utils/api";
 import { useAtom } from "jotai";
 import { infoContentAtom, isLoadingScreenVisibleAtom } from "@/atoms";
@@ -9,8 +9,7 @@ import NavBar from "@/components/NavBar";
 import Carousel from "@/components/Carousel";
 import InfoContent from "@/components/InfoContent";
 import Button from "@/components/Button";
-import { FaPlay } from "react-icons/fa";
-import { ImPlay } from "react-icons/im";
+import { BsPlayBtnFill } from "react-icons/bs";
 
 const Home: NextPage = () => {
   const { data: contents } = api.content.getAll.useQuery(undefined, {
@@ -91,7 +90,7 @@ const Home: NextPage = () => {
             <div className="flex w-full gap-1">
               <Button>
                 <div className="text-2xl">
-                  <ImPlay className="drop-shadow-md" />
+                  <BsPlayBtnFill className="drop-shadow-md" />
                 </div>
                 <div className="text-xl font-medium drop-shadow-md">Play</div>
               </Button>
@@ -108,7 +107,12 @@ const Home: NextPage = () => {
           </div>
         </div>
       </div>
-      <Carousel contents={contents || []} />
+      <div className="z-10 -mt-28">
+        <Carousel contents={contents || []} />
+      </div>
+      <div className="z-10">
+        <Carousel contents={contents || []} />
+      </div>
       <InfoContent content={infoContent} />
     </div>
   );

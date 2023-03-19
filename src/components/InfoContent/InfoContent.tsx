@@ -2,11 +2,7 @@
 import { infoContentAtom } from "@/atoms";
 import { type Content } from "@prisma/client";
 import { useAtom } from "jotai";
-import {
-  AiFillPlayCircle,
-  AiFillPlusCircle,
-  AiOutlineCloseSquare,
-} from "react-icons/ai";
+import { AiFillPlayCircle, AiFillPlusCircle } from "react-icons/ai";
 import { IoMdShareAlt } from "react-icons/io";
 import { RiDownloadCloudFill } from "react-icons/ri";
 import { BsPlayBtnFill } from "react-icons/bs";
