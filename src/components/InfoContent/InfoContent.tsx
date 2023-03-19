@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { infoContentAtom } from "@/atoms";
-import { type Content } from "@prisma/client";
+import { ContentType, type Content } from "@prisma/client";
 import { useAtom } from "jotai";
 import { AiFillPlayCircle, AiFillPlusCircle } from "react-icons/ai";
 import { IoMdShareAlt } from "react-icons/io";
@@ -9,6 +9,9 @@ import { BsPlayBtnFill } from "react-icons/bs";
 import ReactPlayer from "react-player";
 import Button from "../Button";
 import { FaGlobe, FaWindowClose } from "react-icons/fa";
+import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
+import { TbBoxMultiple2, TbMovie } from "react-icons/tb";
+import { GiUnderwearShorts } from "react-icons/gi";
 
 type Props = {
   content?: Content;
@@ -69,7 +72,36 @@ const InfoContent = ({ content }: Props) => {
               <div className="flex w-full">
                 <div className="flex max-w-md flex-col">
                   <div className="flex flex-col gap-2">
-                    <div className="text-3xl font-black">{content.name}</div>
+                    <div className="flex gap-1">
+                      {content.rating && (
+                        <div className="mt-1 flex h-8 w-8 shrink-0 grow-0">
+                          <CircularProgressbar
+                            value={content.rating}
+                            minValue={0}
+                            maxValue={10}
+                            text={content.rating.toFixed(1).toString()}
+                            styles={buildStyles({
+                              textColor: "white",
+                              textSize: "48px",
+                              pathColor: "#32cd32",
+                              trailColor: "transparent",
+                            })}
+                          />
+                        </div>
+                      )}
+                      <div className="flex shrink-0 grow-0 pt-1">
+                        {content.type === ContentType.MOVIE && (
+                          <TbMovie className="text-3xl" />
+                        )}
+                        {content.type === ContentType.SERIE && (
+                          <TbBoxMultiple2 className="text-3xl" />
+                        )}
+                        {content.type === ContentType.SHORT && (
+                          <GiUnderwearShorts className="text-3xl" />
+                        )}
+                      </div>
+                      <div className="text-3xl font-black">{content.name}</div>
+                    </div>
                     <div className="text-base">{content.description}</div>
                   </div>
                 </div>

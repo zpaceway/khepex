@@ -7,6 +7,7 @@ import { useRef, useState } from "react";
 import { MdInfoOutline } from "react-icons/md";
 import { TbBoxMultiple2, TbMovie } from "react-icons/tb";
 import { GiUnderwearShorts } from "react-icons/gi";
+import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
 
 type Props = {
   contents: Content[];
@@ -62,9 +63,9 @@ const Carousel = ({ contents }: Props) => {
           <div
             key={`new-realeases-${index}`}
             onClick={() => !isDragging && setInfoContentId(content.id)}
-            className="relative flex h-40 w-32 shrink-0 grow-0 flex-col gap-1"
+            className="relative flex h-52 w-40 shrink-0 grow-0 flex-col gap-1"
           >
-            <div className="relative aspect-square h-40 overflow-hidden rounded-sm">
+            <div className="relative aspect-square h-52 overflow-hidden rounded-sm">
               <div className="group absolute inset-0 cursor-pointer transition-all">
                 <div className="hidden h-full w-full items-center justify-center bg-black bg-opacity-50 group-hover:flex">
                   <div className="text-6xl">
@@ -78,19 +79,35 @@ const Carousel = ({ contents }: Props) => {
                 className="h-full w-full object-cover"
               />
             </div>
-            <div className="absolute bottom-0 z-20  flex w-full items-center gap-1 bg-black bg-opacity-50 p-2">
+            <div className="absolute bottom-0 z-20 flex w-full items-center gap-1 bg-black bg-opacity-50 p-2">
+              {content.rating && (
+                <div className="w-8 shrink-0 grow-0">
+                  <CircularProgressbar
+                    value={content.rating}
+                    minValue={0}
+                    maxValue={10}
+                    text={content.rating.toFixed(1).toString()}
+                    styles={buildStyles({
+                      textColor: "white",
+                      textSize: "48px",
+                      pathColor: "#32cd32",
+                      trailColor: "transparent",
+                    })}
+                  />
+                </div>
+              )}
               <div>
                 {content.type === ContentType.MOVIE && (
-                  <TbMovie className="text-lg" />
+                  <TbMovie className="text-base" />
                 )}
                 {content.type === ContentType.SERIE && (
-                  <TbBoxMultiple2 className="text-lg" />
+                  <TbBoxMultiple2 className="text-base" />
                 )}
                 {content.type === ContentType.SHORT && (
-                  <GiUnderwearShorts className="text-lg" />
+                  <GiUnderwearShorts className="text-base" />
                 )}
               </div>
-              <div className="truncate text-sm">{content.name}</div>
+              <div className="truncate text-xs">{content.name}</div>
             </div>
           </div>
         ))}

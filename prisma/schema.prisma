@@ -74,6 +74,7 @@ model Content {
     sponsoredVideo   String
     createdAt        DateTime           @default(now())
     updatedAt        DateTime           @updatedAt
+    rating           Float?
     type             ContentType
     sponsored        SponsoredContent[]
 

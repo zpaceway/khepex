@@ -10,6 +10,10 @@ import Carousel from "@/components/Carousel";
 import InfoContent from "@/components/InfoContent";
 import Button from "@/components/Button";
 import { BsPlayBtnFill } from "react-icons/bs";
+import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
+import { TbBoxMultiple2, TbMovie } from "react-icons/tb";
+import { ContentType } from "@prisma/client";
+import { GiUnderwearShorts } from "react-icons/gi";
 
 const Home: NextPage = () => {
   const { data: contents } = api.content.getAll.useQuery(undefined, {
@@ -82,8 +86,37 @@ const Home: NextPage = () => {
         <div className="absolute inset-y-0 flex items-center justify-center">
           <div className="my-16 mx-4 flex flex-col items-center justify-center gap-4 rounded-sm bg-black bg-opacity-50 p-4 text-zinc-900 lg:mx-16">
             <div className="flex max-w-sm flex-col gap-2 text-white drop-shadow-md">
-              <div className="text-3xl font-black">
-                {sponsoredContent?.name}
+              <div className="flex gap-1">
+                {sponsoredContent?.rating && (
+                  <div className="mt-1 flex h-8 w-8 shrink-0 grow-0">
+                    <CircularProgressbar
+                      value={sponsoredContent?.rating}
+                      minValue={0}
+                      maxValue={10}
+                      text={sponsoredContent?.rating.toFixed(1).toString()}
+                      styles={buildStyles({
+                        textColor: "white",
+                        textSize: "48px",
+                        pathColor: "#32cd32",
+                        trailColor: "transparent",
+                      })}
+                    />
+                  </div>
+                )}
+                <div className="flex shrink-0 grow-0 pt-1">
+                  {sponsoredContent?.type === ContentType.MOVIE && (
+                    <TbMovie className="text-3xl" />
+                  )}
+                  {sponsoredContent?.type === ContentType.SERIE && (
+                    <TbBoxMultiple2 className="text-3xl" />
+                  )}
+                  {sponsoredContent?.type === ContentType.SHORT && (
+                    <GiUnderwearShorts className="text-3xl" />
+                  )}
+                </div>
+                <div className="text-3xl font-black">
+                  {sponsoredContent?.name}
+                </div>
               </div>
               <div className="text-base">{sponsoredContent?.description}</div>
             </div>
@@ -107,7 +140,7 @@ const Home: NextPage = () => {
           </div>
         </div>
       </div>
-      <div className="z-10 -mt-[8.5rem]">
+      <div className="z-10 -mt-[186px]">
         <Carousel contents={contents || []} />
       </div>
       <div className="z-10">
