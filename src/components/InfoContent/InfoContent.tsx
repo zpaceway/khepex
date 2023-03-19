@@ -35,15 +35,19 @@ const InfoContent = ({ content }: Props) => {
           </div>
           <div className="absolute inset-0 -z-10 bg-black bg-opacity-40 shadow-inner"></div>
           <div className="max-w-2xl">
-            <div className="flex h-full w-full flex-col gap-8 p-8">
+            <div className="scrollbar-hide flex h-full w-full flex-col gap-8 overflow-x-auto py-16 px-8">
               <div className="flex gap-4">
                 <div className="flex flex-col gap-2">
                   <div className="text-4xl font-black">{content.name}</div>
                   <div className="text-base">{content.description}</div>
                 </div>
               </div>
-              <div>
-                <ReactPlayer url={content.sponsoredVideo} width="100%" />
+              <div className="aspect-video">
+                <ReactPlayer
+                  url={content.sponsoredVideo}
+                  height="100%"
+                  width="100%"
+                />
               </div>
               <div className="flex justify-center text-4xl">
                 <div className="flex max-w-xs gap-4">
