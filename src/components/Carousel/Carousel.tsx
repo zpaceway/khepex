@@ -27,6 +27,8 @@ const Carousel = ({ contents }: Props) => {
             const carousel = ref.current;
             if (!carousel) return;
 
+            let didMove = false;
+
             const pos = {
               left: carousel.scrollLeft,
               top: carousel.scrollTop,
@@ -39,13 +41,17 @@ const Carousel = ({ contents }: Props) => {
               const deltaY = event.clientY - pos.y;
               carousel.scrollTop = pos.top - deltaY;
               carousel.scrollLeft = pos.left - deltaX;
-              setIsDragging(true);
+              if (Math.abs(deltaX) >= 8 || Math.abs(deltaY) >= 8) {
+                didMove = true;
+                setIsDragging(true);
+              }
             };
 
             const mouseUpHandler = () => {
               document.removeEventListener("mousemove", mouseMoveHandler);
               document.removeEventListener("mouseup", mouseUpHandler);
-              debouncerRef.current.exec(() => setIsDragging(false));
+              if (didMove)
+                debouncerRef.current.exec(() => setIsDragging(false));
             };
 
             document.addEventListener("mousemove", mouseMoveHandler);
