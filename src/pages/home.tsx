@@ -146,12 +146,6 @@ const Home: NextPage = () => {
         <div className="z-10 tall:-mt-[186px]">
           <Carousel label="New Releases" contents={contents || []} />
         </div>
-        <div className="z-10">
-          <Carousel label="Trending Now" contents={contents || []} />
-        </div>
-        <div className="z-10">
-          <Carousel label="Horror Movies" contents={contents || []} />
-        </div>
       </div>
       <InfoContent content={infoContent} />
     </div>
