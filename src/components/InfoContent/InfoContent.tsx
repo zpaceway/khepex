@@ -49,7 +49,7 @@ const InfoContent = ({ content }: Props) => {
                 width="100%"
               />
             </div>
-            <div className="scrollbar-hide flex w-full flex-col gap-2 overflow-x-auto px-4 pt-2 pb-16">
+            <div className="scrollbar-hide flex w-full flex-col gap-4 overflow-x-auto px-4 pt-2 pb-16">
               <div className="flex gap-1">
                 <Button onClick={() => setInfoContentId("")}>
                   <div className="text-2xl">
