@@ -144,13 +144,13 @@ const Home: NextPage = () => {
       </div>
       <div className="my-16 tall:my-0">
         <div className="z-10 tall:-mt-[186px]">
-          <Carousel contents={contents || []} />
+          <Carousel label="New Releases" contents={contents || []} />
         </div>
         <div className="z-10">
-          <Carousel contents={contents || []} />
+          <Carousel label="Trending Now" contents={contents || []} />
         </div>
         <div className="z-10">
-          <Carousel contents={contents || []} />
+          <Carousel label="Horror Movies" contents={contents || []} />
         </div>
       </div>
       <InfoContent content={infoContent} />

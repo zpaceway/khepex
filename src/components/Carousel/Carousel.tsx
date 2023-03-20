@@ -11,9 +11,10 @@ import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
 
 type Props = {
   contents: Content[];
+  label: string;
 };
 
-const Carousel = ({ contents }: Props) => {
+const Carousel = ({ contents, label }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
   const debouncerRef = useRef(new Debouncer());
   const [, setInfoContentId] = useAtom(infoContentAtom);
@@ -21,7 +22,7 @@ const Carousel = ({ contents }: Props) => {
 
   return (
     <div className="flex flex-col py-2 px-4 lg:px-16">
-      <div className="text-2xl font-black">New Releases</div>
+      <div className="relative text-2xl font-black">{label}</div>
       <div
         ref={ref}
         className="scrollbar-hide flex gap-1 overflow-x-auto"
@@ -79,9 +80,9 @@ const Carousel = ({ contents }: Props) => {
                 className="h-full w-full object-cover"
               />
             </div>
-            <div className="absolute bottom-0 z-20 flex w-full items-center gap-1 bg-black bg-opacity-50 p-2">
+            <div className="absolute bottom-0 flex w-full items-center gap-1 bg-black bg-opacity-50 p-2">
               {content.rating && (
-                <div className="w-8 shrink-0 grow-0">
+                <div className="w-6 shrink-0 grow-0">
                   <CircularProgressbar
                     value={content.rating}
                     minValue={0}
