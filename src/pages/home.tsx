@@ -143,7 +143,7 @@ const Home: NextPage = () => {
         </div>
       </div>
       <div className="my-16 tall:my-0">
-        <div className="z-10 tall:-mt-44">
+        <div className="z-10 tall:-mt-[186px]">
           <Carousel contents={contents || []} />
         </div>
         <div className="z-10">

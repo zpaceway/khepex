@@ -57,7 +57,7 @@ const NavBar = ({ transparent }: Props) => {
   return (
     <div
       className={`fixed top-0 left-0 right-0 z-50 flex select-none justify-between py-4 px-4 transition-all duration-500 lg:px-16 ${
-        transparent ? "bg-transparent" : "bg-zinc-900"
+        transparent ? "bg-transparent" : "bg-black"
       }`}
     >
       <div className="flex items-center gap-8">
