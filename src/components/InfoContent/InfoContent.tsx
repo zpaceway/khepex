@@ -72,33 +72,35 @@ const InfoContent = ({ content }: Props) => {
               <div className="flex w-full">
                 <div className="flex max-w-md flex-col">
                   <div className="flex flex-col gap-2">
-                    <div className="flex gap-1">
-                      {content.rating && (
-                        <div className="mt-1 flex h-8 w-8 shrink-0 grow-0">
-                          <CircularProgressbar
-                            value={content.rating}
-                            minValue={0}
-                            maxValue={10}
-                            text={content.rating.toFixed(1).toString()}
-                            styles={buildStyles({
-                              textColor: "white",
-                              textSize: "48px",
-                              pathColor: "#32cd32",
-                              trailColor: "transparent",
-                            })}
-                          />
+                    <div className="flex flex-col gap-1">
+                      <div className="flex items-center gap-1">
+                        {content.rating && (
+                          <div className="flex h-8 w-8 shrink-0 grow-0">
+                            <CircularProgressbar
+                              value={content.rating}
+                              minValue={0}
+                              maxValue={10}
+                              text={content.rating.toFixed(1).toString()}
+                              styles={buildStyles({
+                                textColor: "white",
+                                textSize: "48px",
+                                pathColor: "#32cd32",
+                                trailColor: "transparent",
+                              })}
+                            />
+                          </div>
+                        )}
+                        <div className="flex shrink-0 grow-0">
+                          {content.type === ContentType.MOVIE && (
+                            <TbMovie className="text-3xl" />
+                          )}
+                          {content.type === ContentType.SERIE && (
+                            <TbBoxMultiple2 className="text-3xl" />
+                          )}
+                          {content.type === ContentType.SHORT && (
+                            <GiUnderwearShorts className="text-3xl" />
+                          )}
                         </div>
-                      )}
-                      <div className="flex shrink-0 grow-0 pt-1">
-                        {content.type === ContentType.MOVIE && (
-                          <TbMovie className="text-3xl" />
-                        )}
-                        {content.type === ContentType.SERIE && (
-                          <TbBoxMultiple2 className="text-3xl" />
-                        )}
-                        {content.type === ContentType.SHORT && (
-                          <GiUnderwearShorts className="text-3xl" />
-                        )}
                       </div>
                       <div className="text-3xl font-black">{content.name}</div>
                     </div>
