@@ -108,7 +108,7 @@ const Carousel = ({ contents, label }: Props) => {
                   <GiUnderwearShorts className="text-base" />
                 )}
               </div>
-              <div className="truncate text-xs">{content.name}</div>
+              <div className="truncate text-sm">{content.name}</div>
             </div>
           </div>
         ))}
