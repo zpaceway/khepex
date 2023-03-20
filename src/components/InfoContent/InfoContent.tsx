@@ -39,9 +39,9 @@ const InfoContent = ({ content }: Props) => {
               alt=""
             />
           </div>
-          <div className="absolute inset-0 -z-10 bg-black bg-opacity-40 shadow-inner"></div>
+          <div className="absolute inset-0 -z-10 bg-black bg-opacity-60 shadow-inner"></div>
           <div className="flex flex-col overflow-auto">
-            <div className="flex aspect-video overflow-hidden">
+            <div className="flex aspect-video overflow-hidden shadow-lg shadow-black">
               <ReactPlayer
                 controls
                 url={content.sponsoredVideo}
@@ -49,7 +49,7 @@ const InfoContent = ({ content }: Props) => {
                 width="100%"
               />
             </div>
-            <div className="scrollbar-hide flex w-full flex-col gap-4 overflow-x-auto px-4 pt-2 pb-16">
+            <div className="scrollbar-hide flex w-full flex-col gap-4 overflow-x-auto px-4 pt-8 pb-16">
               <div className="flex gap-1">
                 <Button onClick={() => setInfoContentId("")}>
                   <div className="text-2xl">
